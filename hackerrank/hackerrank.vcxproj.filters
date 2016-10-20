@@ -16,6 +16,15 @@
     <Filter Include="Header Files\solutions">
       <UniqueIdentifier>{a8cce30f-b019-49ac-a380-89426c45b98b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\solutions\weekOfCode24Year2016">
+      <UniqueIdentifier>{d4ff5fb8-01b2-4ecd-b2f7-f3d5f41c04d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\NotSolved">
+      <UniqueIdentifier>{56fcaf1d-e594-4c3c-9b60-b59f85999210}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\data structures">
+      <UniqueIdentifier>{de5e2c4f-4728-438e-8569-5f8facac7c2b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -40,6 +49,30 @@
       <Filter>Header Files\solutions</Filter>
     </ClInclude>
     <ClInclude Include="solutions\MaximumPerimeterTriangle.h">
+      <Filter>Header Files\solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="AppleAndOrange.h">
+      <Filter>Header Files\solutions\weekOfCode24Year2016</Filter>
+    </ClInclude>
+    <ClInclude Include="BreadthFirstSearchShortestReach.h">
+      <Filter>Header Files\solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="HappyLadybugs.h">
+      <Filter>Header Files\solutions\weekOfCode24Year2016</Filter>
+    </ClInclude>
+    <ClInclude Include="SynchronousShopping.h">
+      <Filter>Header Files\NotSolved</Filter>
+    </ClInclude>
+    <ClInclude Include="DijkstraShortestReach2.h">
+      <Filter>Header Files\solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="AVLTree.h">
+      <Filter>Header Files\data structures</Filter>
+    </ClInclude>
+    <ClInclude Include="SimplifiedChessEngine.h">
+      <Filter>Header Files\NotSolved</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimsMSTSpecialSubtree.h">
       <Filter>Header Files\solutions</Filter>
     </ClInclude>
   </ItemGroup>

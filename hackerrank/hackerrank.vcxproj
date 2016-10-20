@@ -79,13 +79,21 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppleAndOrange.h" />
+    <ClInclude Include="AVLTree.h" />
+    <ClInclude Include="BreadthFirstSearchShortestReach.h" />
     <ClInclude Include="consoleInputReader.h" />
     <ClInclude Include="consoleWritter.h" />
+    <ClInclude Include="DijkstraShortestReach2.h" />
+    <ClInclude Include="HappyLadybugs.h" />
+    <ClInclude Include="PrimsMSTSpecialSubtree.h" />
+    <ClInclude Include="SimplifiedChessEngine.h" />
     <ClInclude Include="solutions\AbsolutePermutation.h" />
     <ClInclude Include="solutions\BiggerIsGreater.h" />
     <ClInclude Include="solutions\BombermanGame.h" />
     <ClInclude Include="solutions\EmaSupercomputer.h" />
     <ClInclude Include="solutions\MaximumPerimeterTriangle.h" />
+    <ClInclude Include="SynchronousShopping.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="hackerrank.cpp" />

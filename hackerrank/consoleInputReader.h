@@ -25,6 +25,17 @@ std::vector<int> getNextIntInputs(){
 	return values;
 }
 
+std::vector<int> getNextIntInputs(int size){
+	std::vector<int> values(size);
+	for (int i = 0; i < size; ++i){
+		int nextValue;
+		std::cin >> nextValue;
+		values.push_back(nextValue);
+	}
+
+	return values;
+}
+
 std::vector<std::string> getNextStringInputs(){
 	int size;
 	std::cin >> size;
@@ -54,4 +65,20 @@ std::vector<std::string> getNextStringInputs(int count){
 	}
 
 	return values;
+}
+
+std::string getNextString(){
+	std::string empty;
+	std::getline(std::cin,empty);
+
+	std::string nextValue;
+	std::getline(std::cin,nextValue);
+	return nextValue;
+}
+
+char getNextCharInput(){
+	char value;
+	scanf(" %c",&value);
+
+	return value;
 }

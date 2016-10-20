@@ -86,8 +86,8 @@
     <ClInclude Include="consoleWritter.h" />
     <ClInclude Include="DijkstraShortestReach2.h" />
     <ClInclude Include="HappyLadybugs.h" />
+    <ClInclude Include="KruskalMSTReallySpecialSubtree.h" />
     <ClInclude Include="PrimsMSTSpecialSubtree.h" />
-    <ClInclude Include="SimplifiedChessEngine.h" />
     <ClInclude Include="solutions\AbsolutePermutation.h" />
     <ClInclude Include="solutions\BiggerIsGreater.h" />
     <ClInclude Include="solutions\BombermanGame.h" />

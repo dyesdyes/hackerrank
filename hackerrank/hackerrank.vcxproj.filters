@@ -69,10 +69,10 @@
     <ClInclude Include="AVLTree.h">
       <Filter>Header Files\data structures</Filter>
     </ClInclude>
-    <ClInclude Include="SimplifiedChessEngine.h">
-      <Filter>Header Files\NotSolved</Filter>
-    </ClInclude>
     <ClInclude Include="PrimsMSTSpecialSubtree.h">
+      <Filter>Header Files\solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="KruskalMSTReallySpecialSubtree.h">
       <Filter>Header Files\solutions</Filter>
     </ClInclude>
   </ItemGroup>

@@ -74,8 +74,11 @@ public:
 			}
 		}
 
+		deleteAll(nodes);
 		return totalWeight;
 	}
+
+private:
 
 	int parseInput(std::vector<Node*>& nodes){
 		int nodeCount = getNextIntInput();
@@ -94,4 +97,9 @@ public:
 		return startNode;
 	}
 
+	void deleteAll(std::vector<Node*>& nodes){
+		for (int i = 0; i < nodes.size(); ++i){
+			delete nodes[i];
+		}
+	}
 };

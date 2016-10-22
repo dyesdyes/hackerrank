@@ -25,6 +25,9 @@
     <Filter Include="Header Files\data structures">
       <UniqueIdentifier>{de5e2c4f-4728-438e-8569-5f8facac7c2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\data structures\LinkedList">
+      <UniqueIdentifier>{988e7b1e-a709-433b-b349-cc1be8a4275c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -73,6 +76,18 @@
       <Filter>Header Files\solutions</Filter>
     </ClInclude>
     <ClInclude Include="KruskalMSTReallySpecialSubtree.h">
+      <Filter>Header Files\solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="SinglyLinkedList.h">
+      <Filter>Header Files\data structures\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="SinglyLinkedListItem.h">
+      <Filter>Header Files\data structures\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="FloydCityOfBlindingLights.h">
+      <Filter>Header Files\solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="EvenTree.h">
       <Filter>Header Files\solutions</Filter>
     </ClInclude>
   </ItemGroup>

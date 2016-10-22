@@ -9,6 +9,8 @@
 #include <climits>
 #include <vector>
 #include <queue>
+#include <map>
+#include <stack>
 
 using namespace std;
 
@@ -19,12 +21,8 @@ int getNextIntInput(){
 	return value;
 }
 
-
-
-
 int main()
 {
-	
 
     return 0;
 }

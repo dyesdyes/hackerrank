@@ -11,6 +11,27 @@ int getNextIntInput(){
 	return value;
 }
 
+int getNextUnsignedIntInput(){
+	int value;
+	scanf(" %u",&value);
+
+	return value;
+}
+
+long getNextLongInput(){
+	int value;
+	scanf(" %ld",&value);
+
+	return value;
+}
+
+unsigned long long getNextUnsignedLongLongInput(){
+	unsigned long long value;
+	scanf(" %llu",&value);
+
+	return value;
+}
+
 std::vector<int> getNextIntInputs(){
 	int size;
 	std::cin >> size;

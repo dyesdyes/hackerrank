@@ -12,17 +12,25 @@
 #include <map>
 #include <stack>
 
+#include <cmath>
+
+#include <unordered_set>
+
 using namespace std;
 
 int getNextIntInput(){
 	int value;
-	scanf(" %d",&value);
+	std::cin >> value;
 
 	return value;
 }
 
+
+
+
 int main()
 {
+
 
     return 0;
 }

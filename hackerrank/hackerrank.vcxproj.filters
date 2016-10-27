@@ -28,6 +28,12 @@
     <Filter Include="Header Files\data structures\LinkedList">
       <UniqueIdentifier>{988e7b1e-a709-433b-b349-cc1be8a4275c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\solutions\Graph">
+      <UniqueIdentifier>{59797fb6-1ad0-41e5-9b75-f0ec5ac2a546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\solutions\BitManipulation">
+      <UniqueIdentifier>{ff98e56a-7ad8-4d37-b9ed-ccb3d082301d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -57,26 +63,14 @@
     <ClInclude Include="AppleAndOrange.h">
       <Filter>Header Files\solutions\weekOfCode24Year2016</Filter>
     </ClInclude>
-    <ClInclude Include="BreadthFirstSearchShortestReach.h">
-      <Filter>Header Files\solutions</Filter>
-    </ClInclude>
     <ClInclude Include="HappyLadybugs.h">
       <Filter>Header Files\solutions\weekOfCode24Year2016</Filter>
     </ClInclude>
     <ClInclude Include="SynchronousShopping.h">
       <Filter>Header Files\NotSolved</Filter>
     </ClInclude>
-    <ClInclude Include="DijkstraShortestReach2.h">
-      <Filter>Header Files\solutions</Filter>
-    </ClInclude>
     <ClInclude Include="AVLTree.h">
       <Filter>Header Files\data structures</Filter>
-    </ClInclude>
-    <ClInclude Include="PrimsMSTSpecialSubtree.h">
-      <Filter>Header Files\solutions</Filter>
-    </ClInclude>
-    <ClInclude Include="KruskalMSTReallySpecialSubtree.h">
-      <Filter>Header Files\solutions</Filter>
     </ClInclude>
     <ClInclude Include="SinglyLinkedList.h">
       <Filter>Header Files\data structures\LinkedList</Filter>
@@ -85,10 +79,40 @@
       <Filter>Header Files\data structures\LinkedList</Filter>
     </ClInclude>
     <ClInclude Include="FloydCityOfBlindingLights.h">
-      <Filter>Header Files\solutions</Filter>
+      <Filter>Header Files\solutions\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="KruskalMSTReallySpecialSubtree.h">
+      <Filter>Header Files\solutions\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimsMSTSpecialSubtree.h">
+      <Filter>Header Files\solutions\Graph</Filter>
     </ClInclude>
     <ClInclude Include="EvenTree.h">
-      <Filter>Header Files\solutions</Filter>
+      <Filter>Header Files\solutions\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="BreadthFirstSearchShortestReach.h">
+      <Filter>Header Files\solutions\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="DijkstraShortestReach2.h">
+      <Filter>Header Files\solutions\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="LonelyInteger.h">
+      <Filter>Header Files\solutions\BitManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="SumvsXOR.h">
+      <Filter>Header Files\solutions\BitManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="MaximizingXOR.h">
+      <Filter>Header Files\solutions\BitManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="FlippingBits.h">
+      <Filter>Header Files\solutions\BitManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="CounterGame.h">
+      <Filter>Header Files\solutions\BitManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="SansaAndXOR.h">
+      <Filter>Header Files\solutions\BitManipulation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

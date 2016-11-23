@@ -1,4 +1,6 @@
 hackerrank/Debug/*
+TestProject/Debug/*
+MainProject/Debug/*
 
 # Prerequisites
 *.d

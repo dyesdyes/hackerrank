@@ -34,6 +34,9 @@
     <Filter Include="Header Files\solutions\BitManipulation">
       <UniqueIdentifier>{ff98e56a-7ad8-4d37-b9ed-ccb3d082301d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\solutions\weekOfCode25Year2016">
+      <UniqueIdentifier>{e030261b-39ea-48a6-8a37-24e9cb48caa7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -113,6 +116,27 @@
     </ClInclude>
     <ClInclude Include="SansaAndXOR.h">
       <Filter>Header Files\solutions\BitManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="XorSequence.h">
+      <Filter>Header Files\solutions\BitManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="WhatsNext.h">
+      <Filter>Header Files\solutions\BitManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="FibonacciModified.h">
+      <Filter>Header Files\NotSolved</Filter>
+    </ClInclude>
+    <ClInclude Include="BetweenTwoSets.h">
+      <Filter>Header Files\solutions\weekOfCode25Year2016</Filter>
+    </ClInclude>
+    <ClInclude Include="AppendAndDelete.h">
+      <Filter>Header Files\solutions\weekOfCode25Year2016</Filter>
+    </ClInclude>
+    <ClInclude Include="SherlockAndAnagrams.h">
+      <Filter>Header Files\solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="BabyStepGiantStep.h">
+      <Filter>Header Files\solutions\weekOfCode25Year2016</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

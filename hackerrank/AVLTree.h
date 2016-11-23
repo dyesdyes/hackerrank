@@ -1,22 +1,58 @@
 #include <vector>
 #include <queue>
+#include <iostream>
 
-// TODO update weight when erasing a node
-// TODO balance the tree once an element is inserted or deleted
 class AVLTree {
 public:
 	struct Node{
 		Node(int val){
 			value = val;
-			weight = 0;
+			height = 0;
 			leftChild = NULL;
 			rightChild = NULL;
 		}
 
 		int value;
-		int weight;
+		int height;
 		Node* leftChild;
 		Node* rightChild;
+
+		int getHeight(){
+			return height;
+		}
+
+		int getHeightDiff(){
+			int leftHeight = (leftChild) ? leftChild->getHeight() + 1 : 0;
+			int rightHeight = (rightChild) ? rightChild->getHeight() + 1 : 0;
+
+			return rightHeight - leftHeight;
+		}
+
+		void updateHeight(){
+			int maxHeight = 0;
+			if (leftChild){
+				maxHeight = leftChild->getHeight() + 1;
+			}
+			if (rightChild){
+				maxHeight = std::max(rightChild->getHeight() + 1,maxHeight);
+			}
+			height = maxHeight;
+		}
+
+		bool isBalanced(){
+			return std::abs(getHeightDiff()) < 2;
+		}
+
+		int getNumberOfChildren(){
+			int count = 0;
+			if (leftChild){
+				++count;
+			}
+			if (rightChild){
+				++count;
+			}
+			return count;
+		}
 	};
 
 public:
@@ -42,33 +78,15 @@ public:
 			return;
 		}
 
-		insert(val,root);
+		insert(val,root,NULL);
 	}
 
 	Node* find(int val){
-		find(val,root);
+		return find(val,root);
 	}
 
 	void erase(int val){
-		if (root == NULL)
-			return;
-		bool isRootNodeToDelete = root->value == val;
-		if (isRootNodeToDelete){
-			erase(root,NULL);
-			return;
-		}
-
-		Node* parentNode = findParent(val,root);
-		if (parentNode == NULL){
-			return;
-		}
-
-		if (parentNode->leftChild != NULL && parentNode->leftChild->value == val){
-			erase(parentNode->leftChild,parentNode);
-		}
-		else{
-			erase(parentNode->rightChild,parentNode);
-		}
+		erase(val,root,NULL);
 	}
 
 	// DFS
@@ -87,8 +105,165 @@ public:
 
 private:
 
+	void insert(int val,Node* currentNode,Node* parent){
+		if (!currentNode)
+			return;
+
+		bool useLeft = (val < currentNode->value);
+		Node* childToConsider = (useLeft) ? currentNode->leftChild : currentNode->rightChild;
+
+		if (childToConsider != NULL){
+			insert(val,childToConsider,currentNode);
+		}
+		else{
+			if (useLeft){
+				currentNode->leftChild = new Node(val);
+			} else{
+				currentNode->rightChild = new Node(val);
+			}
+		}
+
+		currentNode->updateHeight();
+		balanceTree(currentNode,parent);
+	}
+
+	void balanceTree(Node* currentNode,Node* parent){
+		if (!currentNode)
+			return;
+
+		if (currentNode->isBalanced())
+			return;
+
+		int heightDiff = currentNode->getHeightDiff();
+		if (heightDiff < 0){
+			int childHeightDiff = currentNode->leftChild->getHeightDiff();
+			if (childHeightDiff < 0){
+				leftRotation(currentNode,parent);
+			} else{
+				rightLeftRotation(currentNode,parent);
+			}
+		} else {
+			int childHeightDiff = currentNode->rightChild->getHeightDiff();
+			if (childHeightDiff > 0){
+				rightRotation(currentNode,parent);
+			} else{
+				leftRightRotation(currentNode,parent);
+			}
+		}
+	}
+
+	void leftRotation(Node* currentNode,Node* parent){
+		if (!currentNode || !currentNode->leftChild || !currentNode->leftChild->leftChild){
+			std::cout << "Couldn't left rotate." << std::endl;
+			return;
+		}
+		if (currentNode->leftChild->rightChild){
+			std::cout << "WARNING: The left rotation will remove an element." << std::endl;
+		}
+
+		changeParentChildTo(parent,currentNode->leftChild);
+
+		// rotate current node
+		currentNode->leftChild->rightChild = currentNode;
+		currentNode->leftChild = NULL;
+	}
+
+	void rightRotation(Node* currentNode,Node* parent){
+		if (!currentNode || !currentNode->rightChild || !currentNode->rightChild->rightChild){
+			std::cout << "Couldn't right rotate." << std::endl;
+			return;
+		}
+		if (currentNode->rightChild->leftChild){
+			std::cout << "WARNING: The right rotation will remove an element." << std::endl;
+		}
+
+		changeParentChildTo(parent,currentNode->rightChild);
+
+		// rotate current node
+		currentNode->rightChild->leftChild = currentNode;
+		currentNode->rightChild = NULL;
+	}
+
+	void rightLeftRotation(Node* currentNode,Node* parent){
+		if (!currentNode || !currentNode->leftChild || !currentNode->leftChild->rightChild){
+			std::cout << "Couldn't right-left rotate." << std::endl;
+			return;
+		}
+
+		innerRightRotation(currentNode->leftChild,currentNode);
+		leftRotation(currentNode,parent);
+	}
+
+	void innerRightRotation(Node* currentNode,Node* parent){
+		if (!currentNode || !currentNode->rightChild){
+			std::cout << "Couldn't inner-right rotate." << std::endl;
+			return;
+		}
+		if (currentNode->rightChild->leftChild){
+			std::cout << "WARNING: The inner-right rotation will remove an element." << std::endl;
+		}
+
+		changeParentChildTo(parent,currentNode->rightChild);
+		parent->leftChild->leftChild = currentNode;
+		currentNode->rightChild = NULL;
+	}
+
+	void leftRightRotation(Node* currentNode,Node* parent){
+		if (!currentNode || !currentNode->rightChild || !currentNode->rightChild->leftChild){
+			std::cout << "Couldn't left-right rotate." << std::endl;
+			return;
+		}
+
+		innerLeftRotation(currentNode->rightChild,currentNode);
+		rightRotation(currentNode,parent);
+	}
+
+	void innerLeftRotation(Node* currentNode,Node* parent){
+		if (!currentNode || !currentNode->leftChild){
+			std::cout << "Couldn't inner-right rotate." << std::endl;
+			return;
+		}
+		if (currentNode->leftChild->rightChild){
+			std::cout << "WARNING: The inner-right rotation will remove an element." << std::endl;
+		}
+
+		changeParentChildTo(parent,currentNode->leftChild);
+		parent->rightChild->rightChild = currentNode;
+		currentNode->leftChild = NULL;
+	}
+
+	/**
+		This will change the parent node child to the newChild, overwritting the previous child
+		It is your responsability to handle the previous child
+		Note that if parent is NULL, then it will update the root instead
+	*/
+	void changeParentChildTo(Node* parent,Node* newChild){
+		if (!parent){
+			root = newChild;
+		} else {
+			if (newChild->value < parent->value){
+				parent->leftChild = newChild;
+			} else {
+				parent->rightChild = newChild;
+			}
+		}
+	}
+
+	/* Same as changeParentChildTo() but this will nullify the pointer */
+	void nullifyLinkFromParentNode(Node* nodeToErase,Node* parent){
+		if (!parent){
+			root = NULL;
+		} else{
+			if (nodeToErase->value < parent->value){
+				parent->leftChild = NULL;
+			} else {
+				parent->rightChild = NULL;
+			}
+		}
+	}
+
 	void traverseDFS(Node* currentNode,std::vector<int>& values){
-		if (currentNode == NULL)
+		if (!currentNode)
 			return;
 
 		traverseDFS(currentNode->leftChild,values);
@@ -98,7 +273,7 @@ private:
 	}
 
 	void traverseBFS(Node* currentNode,std::vector<int>& values){
-		if (currentNode == NULL)
+		if (!currentNode)
 			return;
 
 		std::queue<Node*> nodes;
@@ -108,110 +283,97 @@ private:
 			Node* node = nodes.front();
 			nodes.pop();
 
-			if (node->leftChild != NULL)
+			if (node->leftChild)
 				nodes.push(node->leftChild);
 
-			if (node->rightChild != NULL)
+			if (node->rightChild)
 				nodes.push(node->rightChild);
 
 			values.push_back(node->value);
 		}
 	}
 
-	void erase(Node* nodeToErase,Node* parent){
-		if (nodeToErase->leftChild == NULL && nodeToErase->rightChild == NULL){ // no child
-			delete nodeToErase;
-			nodeToErase = NULL;
+	void erase(int val,Node* currentNode,Node* parent){
+		if (!currentNode){
 			return;
 		}
 
-		if (nodeToErase->leftChild == NULL || nodeToErase->rightChild == NULL){ // one child
-			eraseOneChildNode(nodeToErase,parent);
-			return;
-		}
-
-		eraseTwoChildrenNode(nodeToErase,parent);
-	}
-
-	void eraseOneChildNode(Node* oneChildNodeToErase,Node* parent){
-		Node* child = oneChildNodeToErase->leftChild == NULL ? oneChildNodeToErase->rightChild : oneChildNodeToErase->leftChild;
-		if (oneChildNodeToErase == root){
-			root = child;
+		if (currentNode->value == val){
+			erase(currentNode,parent);
 		} else{
-			bool isLeftToReplace = parent->leftChild == oneChildNodeToErase;
-			if (isLeftToReplace){
-				parent->leftChild = child;
-			}
-			else {
-				parent->rightChild = child;
-			}
+			Node* child = val < currentNode->value ? currentNode->leftChild : currentNode->rightChild;
+			erase(val,child,currentNode);
 		}
 
-		delete oneChildNodeToErase;
-		oneChildNodeToErase = NULL;
-	}
-
-	void eraseTwoChildrenNode(Node* twoChildrenNodeToErase,Node* parent){
-		Node* lowestParentNode = findLowestValueNodeParent(twoChildrenNodeToErase->rightChild);
-
-		Node* nodeToReplace = (lowestParentNode == NULL) ? twoChildrenNodeToErase->rightChild : lowestParentNode->leftChild;
-
-		if (twoChildrenNodeToErase == root){
-			root = nodeToReplace;
-		} else{
-			bool isLeftToReplace = parent->leftChild == twoChildrenNodeToErase;
-			if (isLeftToReplace){
-				parent->leftChild = nodeToReplace;
-			}
-			else {
-				parent->rightChild = nodeToReplace;
-			}
+		if (currentNode){
+			currentNode->updateHeight();
+			balanceTree(currentNode,parent);
 		}
-
-		if (lowestParentNode != NULL){
-			lowestParentNode->leftChild = NULL;
-		}
-
-		delete twoChildrenNodeToErase;
-		twoChildrenNodeToErase = NULL;
 	}
 
-	Node* findLowestValueNodeParent(Node *currentNode){
-		if (currentNode == NULL)
-			return NULL;
-
-		if (currentNode->leftChild == NULL)
-			return NULL;
-		
-		if (currentNode->leftChild->leftChild == NULL)
-			return currentNode;
-		else
-			return findLowestValueNodeParent(currentNode->leftChild);
-	}
-
-	void insert(int val,Node* currentNode){
-		if (currentNode == NULL)
+	/* The method to erase a node will depend on how many children this node has.  */
+	void erase(Node*& nodeToErase,Node* parent){
+		if (!nodeToErase){
 			return;
-
-		bool useLeft = (val < currentNode->value);
-		Node* childToConsider = (useLeft) ? currentNode->leftChild : currentNode->rightChild;
-		
-		currentNode->weight = (useLeft) ? currentNode->weight - 1 : currentNode->weight + 1;
-
-		if (childToConsider != NULL){
-			insert(val,childToConsider);
 		}
-		else{
-			if (useLeft){
-				currentNode->leftChild = new Node(val);
-			} else{
-				currentNode->rightChild = new Node(val);
-			}
+
+		int childrenCount = nodeToErase->getNumberOfChildren();
+		switch(childrenCount){
+			case 0: 
+			{
+				eraseNoChildNode(nodeToErase,parent);
+			} break;
+
+			case 1: 
+			{
+				eraseOneChildNode(nodeToErase,parent);
+			} break;
+
+			case 2: 
+			{
+				eraseTwoChildrenNode(nodeToErase,parent);
+			} break;
+
+			default: 
+			{
+				std::cout << "Couldn't erase value as we found an impossible number of children for that node." << std::endl;
+			} break;
 		}
+	}
+
+	void eraseNoChildNode(Node*& nodeToErase,Node* parent){
+		nullifyLinkFromParentNode(nodeToErase,parent);
+		delete nodeToErase;
+		nodeToErase = NULL;
+	}
+
+	void eraseOneChildNode(Node*& nodeToErase,Node* parent){
+		Node* child = nodeToErase->leftChild ? nodeToErase->leftChild : nodeToErase->rightChild;
+		changeParentChildTo(parent,child);
+
+		delete nodeToErase;
+		nodeToErase = NULL;
+	}
+
+	void eraseTwoChildrenNode(Node*& nodeToErase,Node* parent){
+		Node* lowestParentNode = findLowestValueNodeParent(nodeToErase->rightChild,nodeToErase);
+		Node* nodeToReplace = lowestParentNode == nodeToErase ? nodeToErase->rightChild : lowestParentNode->leftChild;
+		changeParentChildTo(parent,nodeToReplace);
+		nodeToReplace->leftChild = nodeToErase->leftChild;
+
+		delete nodeToErase;
+		nodeToErase = NULL;
+	}
+
+	Node* findLowestValueNodeParent(Node *currentNode,Node* parent){
+		if (!currentNode || !currentNode->leftChild)
+			return parent;
+
+		return findLowestValueNodeParent(currentNode->leftChild,currentNode);
 	}
 
 	Node* find(int val,Node* currentNode){
-		if (currentNode == NULL)
+		if (!currentNode)
 			return NULL;
 
 		if (currentNode->value == val)
@@ -222,102 +384,24 @@ private:
 	}
 
 	Node* findParent(int val,Node* currentNode){
-		if (currentNode == NULL)
+		if (!currentNode)
 			return NULL;
 
 		Node* childToConsider = (val > currentNode->value) ? currentNode->rightChild : currentNode->leftChild;
-		if (childToConsider != NULL && childToConsider->value == val)
+		if (childToConsider && childToConsider->value == val)
 			return currentNode;
 
 		return find(val,childToConsider);
 	}
 
 	void deleteAll(Node* currentNode){
-		if (currentNode == NULL)
+		if (!currentNode)
 			return;
 
 		deleteAll(currentNode->leftChild);
 		deleteAll(currentNode->rightChild);
 
 		delete currentNode;
-	}
-
-	void leftRotation(Node* startNode,Node* parentNode){
-		if (!has2ConsecutiveRightChildrenOnly(startNode)){
-			return;
-		}
-
-		if (startNode == root){
-			root = startNode->rightChild;
-			startNode->rightChild->leftChild = startNode;
-		} else{
-			parentNode->rightChild = startNode->rightChild;
-			startNode->rightChild->leftChild = startNode;
-		}
-	}
-
-	bool has2ConsecutiveRightChildrenOnly(Node* node){
-		return node->rightChild != NULL &&
-			node->leftChild == NULL &&
-			node->rightChild->rightChild != NULL &&
-			node->rightChild->leftChild == NULL;
-	}
-
-	void rightRotation(Node* startNode,Node* parentNode){
-		if (!has2ConsecutiveLeftChildrenOnly(startNode)){
-			return;
-		}
-
-		if (startNode == root){
-			root = startNode->leftChild;
-			startNode->leftChild->rightChild = startNode;
-		} else{
-			parentNode->leftChild = startNode->leftChild;
-			startNode->leftChild->rightChild = startNode;
-		}
-	}
-
-	bool has2ConsecutiveLeftChildrenOnly(Node* node){
-		return node->leftChild != NULL &&
-			node->rightChild == NULL &&
-			node->leftChild->leftChild != NULL &&
-			node->leftChild->rightChild == NULL;
-	}
-
-	void leftRightRotation(Node* startNode,Node* parentNode){
-		if (!has2ConsecutiveRightThenLeftChildrenOnly(startNode))
-			return;
-
-		Node* temp = startNode->rightChild;
-		startNode->rightChild = startNode->rightChild->leftChild;
-		startNode->rightChild->rightChild = temp;
-
-		leftRotation(startNode,parentNode);
-	}
-
-	bool has2ConsecutiveRightThenLeftChildrenOnly(Node* node){
-		return node->rightChild != NULL &&
-			node->leftChild == NULL &&
-			node->rightChild->leftChild != NULL &&
-			node->rightChild->rightChild == NULL;
-	}
-
-	void rightLeftRotation(Node* startNode,Node* parentNode){
-		if (!has2ConsecutiveLeftThenRightChildrenOnly(startNode))
-			return;
-
-		Node* temp = startNode->leftChild;
-		startNode->leftChild = startNode->leftChild->rightChild;
-		startNode->leftChild->leftChild = temp;
-
-		leftRotation(startNode,parentNode);
-	}
-
-	bool has2ConsecutiveLeftThenRightChildrenOnly(Node* node){
-		return node->leftChild != NULL &&
-			node->rightChild == NULL &&
-			node->leftChild->rightChild != NULL &&
-			node->leftChild->leftChild == NULL;
 	}
 
 private:

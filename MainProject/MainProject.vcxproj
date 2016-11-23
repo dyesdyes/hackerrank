@@ -11,14 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{982E28FD-6DE7-48A7-8904-1B956D9CD9D7}</ProjectGuid>
+    <ProjectGuid>{6B4BFE33-803A-4656-80A1-A0F5F1932CD0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>hackerrank</RootNamespace>
-    <ProjectName>SourceFilesProject</ProjectName>
+    <RootNamespace>MainProject</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -48,15 +47,18 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\hackerrank</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SourceFilesProject.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -66,11 +68,11 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
@@ -80,41 +82,24 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AppendAndDelete.h" />
-    <ClInclude Include="AppleAndOrange.h" />
-    <ClInclude Include="AVLTree.h" />
-    <ClInclude Include="BabyStepGiantStep.h" />
-    <ClInclude Include="BetweenTwoSets.h" />
-    <ClInclude Include="BreadthFirstSearchShortestReach.h" />
-    <ClInclude Include="consoleInputReader.h" />
-    <ClInclude Include="consoleWritter.h" />
-    <ClInclude Include="CounterGame.h" />
-    <ClInclude Include="DijkstraShortestReach2.h" />
-    <ClInclude Include="EvenTree.h" />
-    <ClInclude Include="FibonacciModified.h" />
-    <ClInclude Include="FlippingBits.h" />
-    <ClInclude Include="FloydCityOfBlindingLights.h" />
-    <ClInclude Include="HappyLadybugs.h" />
-    <ClInclude Include="KruskalMSTReallySpecialSubtree.h" />
-    <ClInclude Include="LonelyInteger.h" />
-    <ClInclude Include="MaximizingXOR.h" />
-    <ClInclude Include="SansaAndXOR.h" />
-    <ClInclude Include="SherlockAndAnagrams.h" />
-    <ClInclude Include="SinglyLinkedList.h" />
-    <ClInclude Include="PrimsMSTSpecialSubtree.h" />
-    <ClInclude Include="SinglyLinkedListItem.h" />
-    <ClInclude Include="solutions\AbsolutePermutation.h" />
-    <ClInclude Include="solutions\BiggerIsGreater.h" />
-    <ClInclude Include="solutions\BombermanGame.h" />
-    <ClInclude Include="solutions\EmaSupercomputer.h" />
-    <ClInclude Include="solutions\MaximumPerimeterTriangle.h" />
-    <ClInclude Include="SumvsXOR.h" />
-    <ClInclude Include="SynchronousShopping.h" />
-    <ClInclude Include="WhatsNext.h" />
-    <ClInclude Include="XorSequence.h" />
+    <ClInclude Include="MainProject.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hackerrank.cpp" />
+    <ClCompile Include="MainProject.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MainProject.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MainProject.ico" />
+    <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

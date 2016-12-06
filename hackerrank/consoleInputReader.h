@@ -11,15 +11,15 @@ int getNextIntInput(){
 	return value;
 }
 
-int getNextUnsignedIntInput(){
-	int value;
+unsigned int getNextUnsignedIntInput(){
+	unsigned int value;
 	scanf(" %u",&value);
 
 	return value;
 }
 
 long getNextLongInput(){
-	int value;
+	long value;
 	scanf(" %ld",&value);
 
 	return value;

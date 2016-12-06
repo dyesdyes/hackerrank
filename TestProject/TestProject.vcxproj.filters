@@ -16,6 +16,9 @@
     <Filter Include="Source Files\data structures">
       <UniqueIdentifier>{353c7e1b-1ced-49a6-b29d-582a823284f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Other">
+      <UniqueIdentifier>{0b419eab-3c1a-4da8-a343-666bbe0b2717}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -37,6 +40,12 @@
     </ClCompile>
     <ClCompile Include="AVLTreeTest.cpp">
       <Filter>Source Files\data structures</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KnapsackTest.cpp">
+      <Filter>Source Files\Other</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

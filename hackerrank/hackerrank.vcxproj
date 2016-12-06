@@ -94,12 +94,16 @@
     <ClInclude Include="FibonacciModified.h" />
     <ClInclude Include="FlippingBits.h" />
     <ClInclude Include="FloydCityOfBlindingLights.h" />
+    <ClInclude Include="GridlandMetro.h" />
     <ClInclude Include="HappyLadybugs.h" />
+    <ClInclude Include="Knapsack.h" />
     <ClInclude Include="KruskalMSTReallySpecialSubtree.h" />
     <ClInclude Include="LonelyInteger.h" />
     <ClInclude Include="MaximizingXOR.h" />
     <ClInclude Include="SansaAndXOR.h" />
     <ClInclude Include="SherlockAndAnagrams.h" />
+    <ClInclude Include="ShortPalindrome.h" />
+    <ClInclude Include="SimpleHashMap.h" />
     <ClInclude Include="SinglyLinkedList.h" />
     <ClInclude Include="PrimsMSTSpecialSubtree.h" />
     <ClInclude Include="SinglyLinkedListItem.h" />

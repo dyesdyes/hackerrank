@@ -7,7 +7,7 @@
 #include "AVLTree.h"
 
 
-TEST_CASE("Simple insert, no rotation","[insert][traversePostOrder]") {
+TEST_CASE("AVLTree Simple insert, no rotation","[insert][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(4);
 	avltree.insert(3);
@@ -20,7 +20,7 @@ TEST_CASE("Simple insert, no rotation","[insert][traversePostOrder]") {
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("Insert with left rotation","[insert][rotation][traversePostOrder]") {
+TEST_CASE("AVLTree Insert with left rotation","[insert][rotation][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(5);
 	avltree.insert(4);
@@ -33,7 +33,7 @@ TEST_CASE("Insert with left rotation","[insert][rotation][traversePostOrder]") {
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("Insert with right rotation","[insert][rotation][traversePostOrder]") {
+TEST_CASE("AVLTree Insert with right rotation","[insert][rotation][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(1);
 	avltree.insert(2);
@@ -46,7 +46,7 @@ TEST_CASE("Insert with right rotation","[insert][rotation][traversePostOrder]") 
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("Insert with right-left rotation","[insert][rotation][traversePostOrder]") {
+TEST_CASE("AVLTree Insert with right-left rotation","[insert][rotation][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(4);
 	avltree.insert(1);
@@ -59,7 +59,7 @@ TEST_CASE("Insert with right-left rotation","[insert][rotation][traversePostOrde
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("Insert with left-right rotation","[insert][rotation][traversePostOrder]") {
+TEST_CASE("AVLTree Insert with left-right rotation","[insert][rotation][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(2);
 	avltree.insert(4);
@@ -72,7 +72,7 @@ TEST_CASE("Insert with left-right rotation","[insert][rotation][traversePostOrde
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("erase with no item","[erase][traversePostOrder]") {
+TEST_CASE("AVLTree erase with no item","[erase][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.erase(4);
 
@@ -81,7 +81,7 @@ TEST_CASE("erase with no item","[erase][traversePostOrder]") {
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("erase with one item","[erase][traversePostOrder]") {
+TEST_CASE("AVLTree erase with one item","[erase][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(4);
 	avltree.erase(4);
@@ -91,7 +91,7 @@ TEST_CASE("erase with one item","[erase][traversePostOrder]") {
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("Simple insert, no rotation, erase with one child","[insert][erase][traversePostOrder]") {
+TEST_CASE("AVLTree Simple insert, no rotation, erase with one child","[insert][erase][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(4);
 	avltree.insert(3);
@@ -106,7 +106,7 @@ TEST_CASE("Simple insert, no rotation, erase with one child","[insert][erase][tr
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("Simple insert, no rotation, erase with two children","[insert][erase][traversePostOrder]") {
+TEST_CASE("AVLTree Simple insert, no rotation, erase with two children","[insert][erase][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(4);
 	avltree.insert(3);
@@ -122,7 +122,7 @@ TEST_CASE("Simple insert, no rotation, erase with two children","[insert][erase]
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("Simple insert, no rotation, erase root node with two children","[insert][erase][root][traversePostOrder]") {
+TEST_CASE("AVLTree Simple insert, no rotation, erase root node with two children","[insert][erase][root][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(4);
 	avltree.insert(3);
@@ -135,7 +135,7 @@ TEST_CASE("Simple insert, no rotation, erase root node with two children","[inse
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("Simple insert, no rotation, erase with rotation","[insert][erase][traversePostOrder]") {
+TEST_CASE("AVLTree Simple insert, no rotation, erase with rotation","[insert][erase][traversePostOrder]") {
 	AVLTree avltree;
 	avltree.insert(4);
 	avltree.insert(3);
@@ -151,7 +151,7 @@ TEST_CASE("Simple insert, no rotation, erase with rotation","[insert][erase][tra
 	REQUIRE(actual == expected);
 }
 
-TEST_CASE("Test node height property","[height]") {
+TEST_CASE("AVLTree Test node height property","[height]") {
 	
 	SECTION("insert only, No rotation, left branch heavier") {
 		AVLTree avltree;

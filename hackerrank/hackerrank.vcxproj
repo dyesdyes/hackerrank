@@ -53,6 +53,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>Utils</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -80,42 +81,43 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AppendAndDelete.h" />
-    <ClInclude Include="AppleAndOrange.h" />
-    <ClInclude Include="AVLTree.h" />
-    <ClInclude Include="BabyStepGiantStep.h" />
-    <ClInclude Include="BetweenTwoSets.h" />
-    <ClInclude Include="BreadthFirstSearchShortestReach.h" />
-    <ClInclude Include="consoleInputReader.h" />
-    <ClInclude Include="consoleWritter.h" />
-    <ClInclude Include="CounterGame.h" />
-    <ClInclude Include="DijkstraShortestReach2.h" />
-    <ClInclude Include="EvenTree.h" />
-    <ClInclude Include="FibonacciModified.h" />
-    <ClInclude Include="FlippingBits.h" />
-    <ClInclude Include="FloydCityOfBlindingLights.h" />
-    <ClInclude Include="GridlandMetro.h" />
-    <ClInclude Include="HappyLadybugs.h" />
-    <ClInclude Include="Knapsack.h" />
-    <ClInclude Include="KruskalMSTReallySpecialSubtree.h" />
-    <ClInclude Include="LonelyInteger.h" />
-    <ClInclude Include="MaximizingXOR.h" />
-    <ClInclude Include="SansaAndXOR.h" />
-    <ClInclude Include="SherlockAndAnagrams.h" />
-    <ClInclude Include="ShortPalindrome.h" />
-    <ClInclude Include="SimpleHashMap.h" />
-    <ClInclude Include="SinglyLinkedList.h" />
-    <ClInclude Include="PrimsMSTSpecialSubtree.h" />
-    <ClInclude Include="SinglyLinkedListItem.h" />
+    <ClInclude Include="Not hackerrank related\AVLTree.h" />
+    <ClInclude Include="Not hackerrank related\Knapsack.h" />
+    <ClInclude Include="Not hackerrank related\SimpleHashMap.h" />
+    <ClInclude Include="Not hackerrank related\SinglyLinkedList.h" />
+    <ClInclude Include="Not hackerrank related\SinglyLinkedListItem.h" />
+    <ClInclude Include="Not solved\FibonacciModified.h" />
+    <ClInclude Include="Not solved\ShortPalindrome.h" />
+    <ClInclude Include="Not solved\SynchronousShopping.h" />
     <ClInclude Include="solutions\AbsolutePermutation.h" />
     <ClInclude Include="solutions\BiggerIsGreater.h" />
+    <ClInclude Include="solutions\BitManipulation\CounterGame.h" />
+    <ClInclude Include="solutions\BitManipulation\FlippingBits.h" />
+    <ClInclude Include="solutions\BitManipulation\LonelyInteger.h" />
+    <ClInclude Include="solutions\BitManipulation\MaximizingXOR.h" />
+    <ClInclude Include="solutions\BitManipulation\SansaAndXOR.h" />
+    <ClInclude Include="solutions\BitManipulation\SumvsXOR.h" />
+    <ClInclude Include="solutions\BitManipulation\WhatsNext.h" />
+    <ClInclude Include="solutions\BitManipulation\XorSequence.h" />
     <ClInclude Include="solutions\BombermanGame.h" />
+    <ClInclude Include="solutions\DoublyLinkedListTree.h" />
     <ClInclude Include="solutions\EmaSupercomputer.h" />
+    <ClInclude Include="solutions\Graph\BreadthFirstSearchShortestReach.h" />
+    <ClInclude Include="solutions\Graph\DijkstraShortestReach2.h" />
+    <ClInclude Include="solutions\Graph\EvenTree.h" />
+    <ClInclude Include="solutions\Graph\FloydCityOfBlindingLights.h" />
+    <ClInclude Include="solutions\Graph\KruskalMSTReallySpecialSubtree.h" />
+    <ClInclude Include="solutions\Graph\PrimsMSTSpecialSubtree.h" />
+    <ClInclude Include="solutions\GridlandMetro.h" />
     <ClInclude Include="solutions\MaximumPerimeterTriangle.h" />
-    <ClInclude Include="SumvsXOR.h" />
-    <ClInclude Include="SynchronousShopping.h" />
-    <ClInclude Include="WhatsNext.h" />
-    <ClInclude Include="XorSequence.h" />
+    <ClInclude Include="solutions\SherlockAndAnagrams.h" />
+    <ClInclude Include="solutions\weekOfCode24Year2016\AppleAndOrange.h" />
+    <ClInclude Include="solutions\weekOfCode24Year2016\HappyLadybugs.h" />
+    <ClInclude Include="solutions\weekOfCode25Year2016\AppendAndDelete.h" />
+    <ClInclude Include="solutions\weekOfCode25Year2016\BabyStepGiantStep.h" />
+    <ClInclude Include="solutions\weekOfCode25Year2016\BetweenTwoSets.h" />
+    <ClInclude Include="Utils\consoleInputReader.h" />
+    <ClInclude Include="Utils\consoleWritter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="hackerrank.cpp" />

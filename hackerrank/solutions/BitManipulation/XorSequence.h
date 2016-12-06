@@ -8,7 +8,7 @@ public:
 		for(int a0 = 0; a0 < Q; a0++){
 			long L;
 			long R;
-			cin >> L >> R;
+			std::cin >> L >> R;
 
 			long result = 0;
 			while (L % 4 != 0 && L <= R){

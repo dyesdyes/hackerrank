@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
-#include "../consoleInputReader.h"
+#include "consoleInputReader.h"
 
 class MaximumPerimeterTriangle {
 public:
